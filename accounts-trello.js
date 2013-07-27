@@ -12,12 +12,25 @@ if (Meteor.isClient) {
     Trello.requestCredential(options, credentialRequestCompleteCallback);
   };
 } else {
-  var autopublishedFields = _.map(
-    Trello.whitelistedFields.concat(['id', 'fullName']),
-    function (subfield) { return 'services.trello.' + subfield; });
+  var forLoggedInUserAutopublishedFields = _.map(
+    Trello.loggedInUserWhitelistedFields.concat(['id', 'fullName']),
+    function (subfield) { 
+      return 'services.trello.' + subfield;
+    }
+  );
+
+  var forOtherUsersAutopublishedFields = _.map(
+    Trello.otherUsersWhitelistedFields.concat(['id', 'fullName']),
+    function (subfield) { 
+      return 'services.trello.' + subfield;
+    }
+  );
 
   Accounts.addAutopublishFields({
-    forLoggedInUser: autopublishedFields,
-    forOtherUsers: autopublishedFields
+    forLoggedInUser: forLoggedInUserAutopublishedFields,
+    forOtherUsers: forOtherUsersAutopublishedFields
   });
 }
+
+
+
