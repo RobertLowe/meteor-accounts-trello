@@ -1,0 +1,10 @@
+{
+  "name": "accounts-trello",
+  "description": "Accounts Trello",
+  "homepage": "https://github.com/robertlowe/meteor-accounts-trello",
+  "author": "Robert Lowe",
+  "version": "0.1.0",
+  "git": "https://github.com/robertlowe/meteor-accounts-trello.git",
+  "packages": {
+  }
+}
