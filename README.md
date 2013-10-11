@@ -10,7 +10,7 @@ Meteor Accounts Trello can be installed with [Meteorite](https://github.com/oort
 $ mrt add accounts-trello
 ```
 
-Note that version 0.1.0 works with Meteor 0.6.5 and later.
+Note that version 0.1.0 works with Meteor 0.6.6 and later.
 
 ## API
 
