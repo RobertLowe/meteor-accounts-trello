@@ -9,6 +9,8 @@ Package.describe({
 });
 
 Package.on_use(function(api) {
+  api.versionsFrom('1.2.0.2');
+
   // trello
   api.use('oauth1', ['client', 'server']);
   api.use('oauth', ['client', 'server']);
