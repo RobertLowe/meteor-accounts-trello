@@ -1,16 +1,29 @@
-# Meteor Accounts Trello
+# Accounts Trello
 
-Meteor Accounts Trello provides account support for [trello](http://www.trello.com/) logins with [Meteor](http://www.meteor.com/) applications.
+Accounts Trello provides account support for [trello](http://www.trello.com/) logins with [Meteor](http://www.meteor.com/) applications.
 
 ## Installation
 
-Meteor Accounts Trello can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
+Accounts Trello can be installed with [AtmosphereJS](atmospherejs.com). From inside an app:
 
 ``` sh
-$ mrt add accounts-trello
+$ meteor add robertlowe:accounts-trello
 ```
 
-Note that version 0.1.0 works with Meteor 0.6.6 and later.
+Note that version 0.2.0 works with METEOR@1.2.0.2 and later.
+
+You'll probably want to add `accounts-ui` as well:
+
+``` sh
+$ meteor add accounts-ui
+```
+
+And your login buttons somewhere:
+
+```
+{{> loginButtons }}
+```
+
 
 ## API
 
@@ -23,24 +36,16 @@ Note that version 0.1.0 works with Meteor 0.6.6 and later.
 You may want to set the name, scope or expiration of you're tokens, here's an example:
 
 ```
-Accounts.loginServiceConfiguration.remove({
-  service: "trello"
-});
-
-Accounts.loginServiceConfiguration.insert({
-  service       : "trello",
-  consumerKey   : "foo",
-  secret        : "bar"
-  name          : "FooBar App"
-  scope         : "read"
-  expiration    : "never"
-});
-```
-
-## Contributing
-
-To run the tests, ensure that the accounts-trello is checked out to a folder called `accounts-trello`, and then simply run:
-
-``` sh
-$ mrt test-packages accounts-trello
+var settings = ServiceConfiguration.configurations.findOne({service: "trello"});
+if (settings == null){
+  ServiceConfiguration.configurations.insert({
+    service       : "trello",
+    // find these at: https://trello.com/app-key
+    consumerKey   : "SOME_KEY",
+    secret        : "SOME_SECRET",
+    name          : "FooBar App",
+    scope         : "read",
+    expiration    : "never"
+  });
+}
 ```

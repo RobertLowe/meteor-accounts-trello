@@ -1,5 +1,11 @@
 Package.describe({
-  summary: "Login service for Trello accounts"
+  summary: "Login service for Trello accounts",
+  // Version number.
+  version: "0.2.0",
+  // Optional.  Default is package directory name.
+  name: "robertlowe:accounts-trello",
+  // Optional github URL to your source repository.
+  git: "https://github.com/robertlowe/meteor-accounts-trello.git",
 });
 
 Package.on_use(function(api) {
@@ -9,16 +15,13 @@ Package.on_use(function(api) {
   api.use('random', 'client');
   api.use('underscore', 'server');
   api.use('service-configuration', ['client', 'server']);
+  api.imply('service-configuration', ['client', 'server']);
 
   api.export('Trello');
 
-  api.add_files(
-    ['trello_configure.html', 'trello_configure.js'],
-    'client');
-
+  api.add_files(['trello_configure.html', 'trello_configure.js'], 'client');
   api.add_files('trello_server.js', 'server');
   api.add_files('trello_client.js', 'client');
-
 
   api.use('underscore', ['server']);
 
@@ -33,5 +36,4 @@ Package.on_use(function(api) {
 
   api.add_files('trello_login_button.css', 'client');
   api.add_files("accounts-trello.js");
-
 });
